@@ -46,6 +46,7 @@ namespace MarsFramework.Global
 
             extent = new ExtentReports(ReportPath, false, DisplayOrder.NewestFirst);
             extent.LoadConfig(MarsResource.ReportXMLPath);
+            //test = extent.StartTest()
 
             #endregion
 
@@ -68,11 +69,11 @@ namespace MarsFramework.Global
         {
             // Screenshot
             String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
-            test.Log(LogStatus.Info, "Image example: " + img);
+           // test.Log(LogStatus.Info, "Image example: " + img);
             // end test. (Reports)
-            extent.EndTest(test);
+           // extent.EndTest(test);
             // calling Flush writes everything to the log file (Reports)
-            extent.Flush();
+          //  extent.Flush();
             // Close the driver :)            
             GlobalDefinitions.driver.Close();
             GlobalDefinitions.driver.Quit();

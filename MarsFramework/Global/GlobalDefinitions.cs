@@ -126,6 +126,11 @@ namespace MarsFramework.Global
             }
         }
 
+        internal static void wait()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region screenshots
