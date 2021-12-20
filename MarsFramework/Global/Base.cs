@@ -22,6 +22,8 @@ namespace MarsFramework.Global
         #region reports
         public static ExtentTest test;
         public static ExtentReports extent;
+
+        public object Status { get; private set; }
         #endregion
 
         #region setup and tear down
@@ -46,6 +48,7 @@ namespace MarsFramework.Global
 
             extent = new ExtentReports(ReportPath, false, DisplayOrder.NewestFirst);
             extent.LoadConfig(MarsResource.ReportXMLPath);
+            test = extent.StartTest(TestContext.CurrentContext.Test.Properties.Get("Description").ToString());
 
             #endregion
 
@@ -67,8 +70,11 @@ namespace MarsFramework.Global
         public void TearDown()
         {
             // Screenshot
-            String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
-            test.Log(LogStatus.Info, "Image example: " + img);
+            String imgPath = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");
+            //AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
+            test.Log(LogStatus.Info, "Image: " + test.AddScreenCapture(imgPath)); 
+            
+
             // end test. (Reports)
             extent.EndTest(test);
             // calling Flush writes everything to the log file (Reports)
