@@ -10,21 +10,35 @@ namespace MarsFramework
         class User : Global.Base
         {
 
-            [Test]
-            public void Test()
+            [Test(Description = "ShareSkillTest")]
+            public void ShareSkillTest()
             {
                 //go to localhost5000
                 //login the profile page
                 //click share skill
                 ShareSkill shareSkillObj = new ShareSkill();
                 shareSkillObj.EnterShareSkill();
+           
             }
-            //enter the data in share skill
-            //click on save button
 
+            [Test(Description = "ManageListingsEditTest")]
+            public void ManageListingsEditTest()
+            {
+                //edit ManageListing
+                ManageListings manageListingsObj = new ManageListings();
+                manageListingsObj.EditManageListing();
+
+            }
+
+            [Test(Description = "ManageListingsDeleteTest")]
+            public void ManageListingsDeleteTest()
+            {
+                //edit ManageListing
+                ManageListings manageListingsObj = new ManageListings();
+                manageListingsObj.DeleteManageListing();
+
+            }
         }
-
-
 
         }
 }
